@@ -1,0 +1,27 @@
+docker images
+sudo docker build -t flask_app_v1 .
+docker images
+docker run -p 8000:8080 flask_app_v1
+cd
+docker run -d flask_app_v1
+docker ps
+docker stop $(docker ps -aq)
+docker images
+docker run -d d1
+docker ps
+docker attach d
+docker stop d
+docker ps
+docker run -it flask_app_v1
+docker run -d flask_app_v1
+docker ps
+docker inspect 706
+docker logs gracious_newton
+docker logs 70
+docker stop gracious_newton
+ls
+cd Python-Martian-Manhunter-adv-/homeworks/'#8_Docker'
+sudo docker build -t flask_app_v1 .
+docker images
+docker run ad
+

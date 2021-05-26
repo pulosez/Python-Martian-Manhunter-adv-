@@ -1,0 +1,156 @@
+	#1.
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+ubuntu       20.04     7e0aa2d69a15   4 weeks ago   72.7MB
+ubuntu       latest    7e0aa2d69a15   4 weeks ago   72.7MB
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ sudo docker build -t flask_app_v1 .
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ docker images
+REPOSITORY     TAG       IMAGE ID       CREATED              SIZE
+flask_app_v1   latest    d14cf63955fc   About a minute ago   422MB
+ubuntu         20.04     7e0aa2d69a15   4 weeks ago          72.7MB
+ubuntu         latest    7e0aa2d69a15   4 weeks ago          72.7MB
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ docker run -p 8000:8080 flask_app_v1
+ * Serving Flask app '/opt/app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:8080/ (Press CTRL+C to quit)
+172.17.0.1 - - [26/May/2021 22:07:30] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [26/May/2021 22:07:52] "GET /hello HTTP/1.1" 200 -
+^Calist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ cd
+alist@alist-GF63-8RD:~$ docker run -d flask_app_v1
+0daf74df3184736d0622a917821ec8b61f162f20340d0ab70d502fc6219bab8f
+alist@alist-GF63-8RD:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS     NAMES
+20448b735ef5   flask_app_v1   "/bin/sh -c 'FLASK_A…"   11 seconds ago       Up 9 seconds                  kind_agnesi
+468fb11036cd   flask_app_v1   "/bin/sh -c 'FLASK_A…"   About a minute ago   Up About a minute             intelligent_gould
+alist@alist-GF63-8RD:~$ docker stop $(docker ps -aq)
+20448b735ef5
+468fb11036cd
+7a7acf6c42f8
+de9d9bbe2f35
+0daf74df3184
+e8d8fb4bd429
+alist@alist-GF63-8RD:~$ docker images
+REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
+flask_app_v1   latest    d14cf63955fc   5 minutes ago   422MB
+ubuntu         20.04     7e0aa2d69a15   4 weeks ago     72.7MB
+ubuntu         latest    7e0aa2d69a15   4 weeks ago     72.7MB
+alist@alist-GF63-8RD:~$ docker run -d d1
+de9d9bbe2f35b4d064dbe7e24644ab25b77915c1b86f4c0a15fd495dd9f5e76a
+alist@alist-GF63-8RD:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+de9d9bbe2f35   e         "/bin/sh -c 'FLASK_A…"   27 seconds ago   Up 25 seconds             magical_heisenberg
+alist@alist-GF63-8RD:~$ docker attach d
+
+alist@alist-GF63-8RD:~$ docker stop d
+d
+alist@alist-GF63-8RD:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+alist@alist-GF63-8RD:~$ docker run -it flask_app_v1
+ * Serving Flask app '/opt/app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:8080/ (Press CTRL+C to quit)
+172.17.0.1 - - [26/May/2021 22:17:20] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [26/May/2021 22:17:26] "GET /hello HTTP/1.1" 200 -
+^Calist@alist-GF63-8RD:~$ 
+alist@alist-GF63-8RD:~$ docker run -d flask_app_v1
+706f08d1b7f621ed518df330133beba6e54e833d3f856a35c440fd138e9c1c15
+alist@alist-GF63-8RD:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS         PORTS     NAMES
+706f08d1b7f6   flask_app_v1   "/bin/sh -c 'FLASK_A…"   11 seconds ago   Up 8 seconds             gracious_newton
+alist@alist-GF63-8RD:~$ docker inspect 706
+[
+    {
+        "Id": "706f08d1b7f621ed518df330133beba6e54e833d3f856a35c440fd138e9c1c15",
+        "Created": "2021-05-26T22:16:36.928724941Z",
+        "Path": "/bin/sh",
+        "Args": [
+            "-c",
+            "FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080"
+        ],
+    --------------------
+alist@alist-GF63-8RD:~$ docker logs gracious_newton
+ * Serving Flask app '/opt/app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:8080/ (Press CTRL+C to quit)
+172.17.0.1 - - [26/May/2021 22:20:20] "GET / HTTP/1.1" 200 -
+alist@alist-GF63-8RD:~$ docker logs 70
+ * Serving Flask app '/opt/app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:8080/ (Press CTRL+C to quit)
+172.17.0.1 - - [26/May/2021 22:20:20] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [26/May/2021 22:20:45] "GET /hello HTTP/1.1" 200 -
+172.17.0.1 - - [26/May/2021 22:20:52] "GET / HTTP/1.1" 200 -
+alist@alist-GF63-8RD:~$ docker stop gracious_newton
+gracious_newton
+alist@alist-GF63-8RD:~$ ls
+Відео      Завантаження      Зображення  Стільниця  jenkins_data     Python-Martian-Manhunter-adv-    snap
+Документи  Загальнодоступні  Музика      Шаблони    PyCharmProjects  Python-Martian-Manhunter-adv-HW
+alist@alist-GF63-8RD:~$ cd Python-Martian-Manhunter-adv-/homeworks/'#8_Docker'
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ sudo docker build -t flask_app_v1 .
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ docker images
+REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
+flask_app_v1   latest    ad580880f8f6   6 seconds ago    422MB
+<none>         <none>    d14cf63955fc   26 minutes ago   422MB
+ubuntu         20.04     7e0aa2d69a15   4 weeks ago      72.7MB
+ubuntu         latest    7e0aa2d69a15   4 weeks ago      72.7MB
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#8_Docker$ docker run ad
+ * Serving Flask app '/opt/app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:8080/ (Press CTRL+C to quit)
+172.17.0.1 - - [26/May/2021 22:33:34] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [26/May/2021 22:33:41] "GET /hello HTTP/1.1" 200 -
+172.17.0.1 - - [26/May/2021 22:33:50] "GET /admin HTTP/1.1" 200 -
+
+
+
+
+
+	#2.
+alist@alist-GF63-8RD:~$ docker run -it --name my_story ubuntu
+root@607fbb7e7e0f:/# echo "Your story" > story.txt
+root@607fbb7e7e0f:/# apt-get update && apt-get install cowsay
+root@607fbb7e7e0f:/# cat story.txt|/usr/games/cowsay
+ ____________
+< Your story >
+ ------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+alist@alist-GF63-8RD:~$ docker run -it --name my_story_2 ubuntu
+root@32acfb70dd5d:/# ls
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+root@32acfb70dd5d:/# cd usr/games/cowsay
+bash: cd: usr/games/cowsay: No such file or directory
+root@32acfb70dd5d:/# cat story.txt
+cat: story.txt: No such file or directory
+

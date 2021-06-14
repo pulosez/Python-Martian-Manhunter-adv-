@@ -81,10 +81,10 @@ class Todo(Resource):
 class TodoList(Resource):
 
     def get(self):
-        with open('data.json', 'w') as data_file:
-            json.dump(todos, data_file)
+        with open('data.json', 'r') as data_file:
+            all_data = json.load(data_file)
         data_file.close()
-        return todos
+        return all_data
 
     def post(self):
         todos[request.json.get('todo_id', None)] = request.json.get('text', "")

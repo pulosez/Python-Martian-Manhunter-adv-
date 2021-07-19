@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: hotpink;
+}
+
+.header a {
+    color: white;
+}
+
+.header a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 3vmin;
+    color: hotpink;
+}
+
+.footer {
+	background: #630464;
+    color: white;
+}
+
+.footer .links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0px;
+}
+
+.footer .links ul li{
+    display: inline-block;
+    margin: 2px;
+}
+
+.footer .links ul img {
+    padding: 5px;
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+}
+
+.footer .links ul img:hover {
+	 opacity: .5;
+}
+
+.footer .copyright p {
+	 border-top: 1px solid rgba(255, 255, 255, .1);
+}

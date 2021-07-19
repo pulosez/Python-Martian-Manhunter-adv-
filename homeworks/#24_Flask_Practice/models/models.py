@@ -134,4 +134,11 @@ class Category(db.Model):
         db.String(350)
     )
 
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title
+        }
+
     articles = db.relationship("Article", secondary=article_categories, back_populates="categories")

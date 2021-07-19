@@ -9,6 +9,20 @@
 
 <div class="container">
     <h1>Sign Up</h1>
+    <div class="col-sm-4">
+        {% with errors = get_flashed_messages(category_filter=["danger"]) %}
+        {% if errors %}
+        {%- for message in errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span>{{ message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick=delete_flash(this)>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor -%}
+        {% endif %}
+        {% endwith %}
+    </div>
     <form class="needs-validation" novalidate action="/user-register" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Username</label>
@@ -71,6 +85,12 @@
     });
   }, false);
 })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    function delete_flash(flash){
+        $(flash).parent().remove()
+    }
 </script>
 </body>
 </html>

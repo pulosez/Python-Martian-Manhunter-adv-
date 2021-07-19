@@ -88,8 +88,23 @@ class Contact(Resource):
         return Response(status=200)
 
 
+class ArticleCategories(Resource):
+    def get(self):
+        serialized_articles = []
+        categories = {}
+        articles = Article.query.all()
+        for article in articles:
+            categories["categories"] = [category.serialize for category in article.categories]
+            article_and_categories = article.serialize
+            article_and_categories.update(categories)
+            serialized_articles.append(article_and_categories)
+
+        return serialized_articles
+
+
 api.add_resource(MenuItem, '/api/menu-items')
 api.add_resource(Articles, '/api/articles')
 api.add_resource(Users, '/api/users')
 api.add_resource(ArticlesEntity, '/api/articles/<int:id>')
 api.add_resource(Contact, '/api/contact')
+api.add_resource(ArticleCategories, '/api/article-categories')

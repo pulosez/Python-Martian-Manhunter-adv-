@@ -38,6 +38,16 @@ def user_store():
         activated=0,
     )
 
+    user_check = User.query.filter_by(email=request.form.get('email')).first()
+    if user_check:
+        flash('Email address already exists', 'danger')
+        return redirect('/sign-up')
+    else:
+        user_check = User.query.filter_by(username=request.form.get('username')).first()
+        if user_check:
+            flash('Username already exists', 'danger')
+            return redirect('/sign-up')
+
     db.session.add(user)
     db.session.commit()
 
@@ -76,11 +86,20 @@ def login():
     if user:
         if check_password(user.password, request.form.get('password')):
             session['user'] = user.serialize
+        else:
+            flash('Please check your password and try again.', 'danger')
+            return redirect('/sign-in')
     else:
         user = User.query.filter_by(username=request.form.get('username')).first()
         if user:
             if check_password(user.password, request.form.get('password')):
                 session['user'] = user.serialize
+            else:
+                flash('Please check your password and try again.', 'danger')
+                return redirect('/sign-in')
+        else:
+            flash('Please check your login and try again.', 'danger')
+            return redirect('/sign-in')
 
     return redirect('/')
 

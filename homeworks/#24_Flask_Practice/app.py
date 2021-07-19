@@ -6,7 +6,8 @@ from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 
 
-db = SQLAlchemy()
+db = SQLAlchemy(session_options={'autocommit': True})
+# db = SQLAlchemy()
 
 app = Flask(__name__)
 app.secret_key = "btIeBI8NJgtnPpaocmKyyimUbmsqlSWn"

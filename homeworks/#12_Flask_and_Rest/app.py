@@ -47,7 +47,6 @@ class Todo(Resource):
                 for i in all_data:
                     if i == str(todo_id):
                         data = {todo_id: all_data[i]}
-            data_file.close()
         except KeyError:
             return Response("Not found", status=404)
         return data
@@ -62,7 +61,6 @@ class Todo(Resource):
                     all_data[i] = todos[todo_id]
         with open('data.json', 'w') as data_file:
             json.dump(all_data, data_file)
-        data_file.close()
         return data
 
     def delete(self, todo_id):
@@ -74,7 +72,6 @@ class Todo(Resource):
                     del all_data[i]
         with open('data.json', 'w') as data_file:
             json.dump(all_data, data_file)
-        data_file.close()
         return Response(todos, status=204)
 
 
@@ -83,14 +80,12 @@ class TodoList(Resource):
     def get(self):
         with open('data.json', 'r') as data_file:
             all_data = json.load(data_file)
-        data_file.close()
         return all_data
 
     def post(self):
         todos[request.json.get('todo_id', None)] = request.json.get('text', "")
         with open('data.json', 'w') as data_file:
             json.dump(todos, data_file)
-        data_file.close()
         return todos
 
 

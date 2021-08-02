@@ -12,18 +12,6 @@ class Car(models.Model):
         (ENGINE_ELECTRIC, "Electric engine")
     )
 
-    FUEL_PETROL = 'petrol'
-    FUEL_DIESEL = 'diesel'
-    FUEL_GAS = 'gas'
-    FUEL_ELECTRIC = 'electric'
-
-    FUEL_CHOICES = (
-        (FUEL_PETROL, "Petrol"),
-        (FUEL_DIESEL, "Diesel"),
-        (FUEL_GAS, "Gas"),
-        (FUEL_ELECTRIC, "Electric")
-    )
-
     STATUS_ACTIVE = 'active'
     STATUS_SOLD = 'sold'
     STATUS_ARCHIVED = 'archived'
@@ -58,11 +46,6 @@ class Car(models.Model):
         max_digits=12,
         decimal_places=2,
         default=50_000,
-    )
-    fuel_type = models.CharField(
-        max_length=10,
-        choices=FUEL_CHOICES,
-        default=FUEL_PETROL,
     )
     status = models.CharField(
         max_length=10,
@@ -118,6 +101,11 @@ class Car(models.Model):
     )
     property = models.ManyToManyField(
         'cars.Property',
+    )
+    fuel = models.ForeignKey(
+        'cars.FuelType',
+        on_delete=models.CASCADE,
+        related_name='cars',
     )
 
     def __str__(self):
@@ -225,3 +213,31 @@ class Property(models.Model):
     class Meta:
         verbose_name = 'Property'
         verbose_name_plural = 'Properties'
+
+
+class FuelType(models.Model):
+    FUEL_PETROL = 'petrol'
+    FUEL_DIESEL = 'diesel'
+    FUEL_GAS = 'gas'
+    FUEL_ELECTRIC = 'electric'
+
+    FUEL_CHOICES = (
+        (FUEL_PETROL, "Petrol"),
+        (FUEL_DIESEL, "Diesel"),
+        (FUEL_GAS, "Gas"),
+        (FUEL_ELECTRIC, "Electric")
+    )
+
+    fuel_type = models.CharField(
+        max_length=20,
+        choices=FUEL_CHOICES,
+        default=FUEL_PETROL,
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.fuel_type
+
+    class Meta:
+        verbose_name = 'Fuel Type'
+        verbose_name_plural = 'Fuel Types'

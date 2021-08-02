@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.cars.models import Car, Picture, Color, Model, Brand, Property
+from apps.cars.models import Car, Picture, Color, Model, Brand, Property, FuelType
 
 
 class CarAdmin(admin.ModelAdmin):
@@ -28,3 +28,4 @@ admin.site.register(Color)
 admin.site.register(Model, ModelAdmin)
 admin.site.register(Brand, BrandAdmin)
 admin.site.register(Property, PropertyAdmin)
+admin.site.register(FuelType)

@@ -31,7 +31,6 @@ class Order(models.Model):
     phone = models.CharField(
         validators=[phoneNumberRegex],
         max_length=16,
-        unique=True,
     )
     message = models.TextField(
         blank=True,

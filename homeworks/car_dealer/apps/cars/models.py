@@ -51,10 +51,13 @@ class Car(models.Model):
     )
     population_type = models.CharField(
         max_length=50,
+        null=True,
+        blank=True,
     )
     price = models.DecimalField(
         max_digits=12,
         decimal_places=2,
+        default=50_000,
     )
     fuel_type = models.CharField(
         max_length=10,
@@ -72,6 +75,7 @@ class Car(models.Model):
     capacity = models.DecimalField(
         max_digits=3,
         decimal_places=2,
+        default=1.5,
     )
     gear_case = models.CharField(
         max_length=20,
@@ -209,7 +213,7 @@ class Property(models.Model):
     category = models.CharField(
         max_length=20,
         choices=CATEGORY_CHOICES,
-        blank=True,
+        default=CATEGORY_MIDSIZE,
     )
     name = models.CharField(
         max_length=80,

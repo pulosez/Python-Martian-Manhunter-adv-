@@ -12,6 +12,26 @@ class Car(models.Model):
         (ENGINE_ELECTRIC, "Electric engine")
     )
 
+    POLLUTANT_A_PLUS = 'a+'
+    POLLUTANT_A = 'a'
+    POLLUTANT_B = 'b'
+    POLLUTANT_C = 'c'
+    POLLUTANT_D = 'd'
+    POLLUTANT_E = 'e'
+    POLLUTANT_F = 'f'
+    POLLUTANT_G = 'g'
+
+    POLLUTANT_CHOICES = (
+        (POLLUTANT_A_PLUS, "A+"),
+        (POLLUTANT_A, "A"),
+        (POLLUTANT_B, "B"),
+        (POLLUTANT_C, "C"),
+        (POLLUTANT_D, "D"),
+        (POLLUTANT_E, "E"),
+        (POLLUTANT_F, "F"),
+        (POLLUTANT_G, "G")
+    )
+
     STATUS_ACTIVE = 'active'
     STATUS_SOLD = 'sold'
     STATUS_ARCHIVED = 'archived'
@@ -37,10 +57,10 @@ class Car(models.Model):
         choices=ENGINE_CHOICES,
         default=ENGINE_HEAT,
     )
-    population_type = models.CharField(
-        max_length=50,
-        null=True,
-        blank=True,
+    pollutant_type = models.CharField(
+        max_length=10,
+        choices=POLLUTANT_CHOICES,
+        default=POLLUTANT_A,
     )
     price = models.DecimalField(
         max_digits=12,
@@ -158,7 +178,7 @@ class Model(models.Model):
     brand = models.ForeignKey(
         'cars.Brand',
         on_delete=models.CASCADE,
-        verbose_name='models',
+        related_name='models',
     )
 
     def __str__(self):

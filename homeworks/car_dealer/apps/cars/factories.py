@@ -33,3 +33,20 @@ class PropertyFactory(factory.django.DjangoModelFactory):
         model = 'cars.Property'
 
     name = 'Coupe'
+
+
+class PictureFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = 'cars.Picture'
+
+    position = 3
+    metadata = 'Third metadata'
+    url = factory.django.ImageField(from_path='pictures/test.jpg')
+
+
+class ModelFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = 'cars.Model'
+
+    name = 'A5'
+    brand_id = 2

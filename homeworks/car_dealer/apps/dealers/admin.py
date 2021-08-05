@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.dealers.models import Dealer, City, Country
+from apps.dealers.models import Dealer, City, Country, NewsLetter
 
 
 class DealerAdmin(admin.ModelAdmin):
@@ -22,3 +22,4 @@ class CountryAdmin(admin.ModelAdmin):
 admin.site.register(Dealer, DealerAdmin)
 admin.site.register(City, CityAdmin)
 admin.site.register(Country, CountryAdmin)
+admin.site.register(NewsLetter)

@@ -66,3 +66,16 @@ class Country(models.Model):
     class Meta:
         verbose_name = 'Country'
         verbose_name_plural = 'Countries'
+
+
+class NewsLetter(models.Model):
+    email = models.EmailField(
+        max_length=80,
+    )
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'News Letter'
+        verbose_name_plural = 'News Letters'

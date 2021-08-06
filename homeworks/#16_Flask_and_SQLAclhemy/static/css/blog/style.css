@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: hotpink;
+}
+
+.header a {
+    color: white;
+}
+
+.header a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/*-----Customize article details page-----*/
+ .article-container {
+  background: hsl(345, 94%, 89%);
+  font-family: system-ui;
+  font-size: min(200%, 5vmin);
+}
+
+.details {
+    background: linear-gradient(
+        to right,
+        hsl(236, 94%, 36%),
+        hsl(345, 94%, 54%)
+        );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.details h1 {
+  font-size: 5vmin;
+  line-height: 1.1;
+}
+
+.details h1, p {
+  margin: 0;
+}
+
+.details img {
+	 border: 5px solid #ffffff;
+	 border-radius: 7px;
+}
+
+.details p {
+  font-family: "Dank Mono", ui-monospace, monospace;
+}

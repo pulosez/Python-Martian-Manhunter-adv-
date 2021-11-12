@@ -1,0 +1,109 @@
+	#1.
+alist@alist-GF63-8RD:~$ docker images
+REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
+flask_app_v1   latest    ad580880f8f6   3 days ago    422MB
+<none>         <none>    d14cf63955fc   3 days ago    422MB
+ubuntu         20.04     7e0aa2d69a15   5 weeks ago   72.7MB
+ubuntu         latest    7e0aa2d69a15   5 weeks ago   72.7MB
+alist@alist-GF63-8RD:~$ docker save -o ubuntu-all.tar ubuntu
+alist@alist-GF63-8RD:~$ ls -sh ubuntu-all.tar
+72M ubuntu-all.tar
+alist@alist-GF63-8RD:~$ mkdir ubuntu-all
+alist@alist-GF63-8RD:~$ mv ubuntu-all.tar ubuntu-all
+alist@alist-GF63-8RD:~$ cd ubuntu-all
+alist@alist-GF63-8RD:~/ubuntu-all$ ls -sh
+загалом 72M
+72M ubuntu-all.tar
+alist@alist-GF63-8RD:~/ubuntu-all$ tar xvf ubuntu-all.tar
+2ae7aa944634fefcfd5b886827d742268228e070238fb405b4d846b266060dbb/
+2ae7aa944634fefcfd5b886827d742268228e070238fb405b4d846b266060dbb/VERSION
+2ae7aa944634fefcfd5b886827d742268228e070238fb405b4d846b266060dbb/json
+2ae7aa944634fefcfd5b886827d742268228e070238fb405b4d846b266060dbb/layer.tar
+6e04f1f804d0d621b5a098dc2ecb5bcc7515cdf7f13d530a12fab11a194cfc72/
+6e04f1f804d0d621b5a098dc2ecb5bcc7515cdf7f13d530a12fab11a194cfc72/VERSION
+6e04f1f804d0d621b5a098dc2ecb5bcc7515cdf7f13d530a12fab11a194cfc72/json
+6e04f1f804d0d621b5a098dc2ecb5bcc7515cdf7f13d530a12fab11a194cfc72/layer.tar
+7e0aa2d69a153215c790488ed1fcec162015e973e49962d438e18249d16fa9bd.json
+f3f2ad580f7e6eb71163e45a6cbef2d6b82377e274e5193ff5708f506e9322bc/
+f3f2ad580f7e6eb71163e45a6cbef2d6b82377e274e5193ff5708f506e9322bc/VERSION
+f3f2ad580f7e6eb71163e45a6cbef2d6b82377e274e5193ff5708f506e9322bc/json
+f3f2ad580f7e6eb71163e45a6cbef2d6b82377e274e5193ff5708f506e9322bc/layer.tar
+manifest.json
+repositories
+alist@alist-GF63-8RD:~/ubuntu-all$ 
+
+
+	#2.
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#9_Docker_Practice$ docker build -t rome_datetime:0.1 .
+Sending build context to Docker daemon  9.216kB
+Step 1/5 : FROM ubuntu:latest
+ ---> 7e0aa2d69a15
+Step 2/5 : RUN apt-get update
+ ---> Using cache
+ ---> 4814073ba480
+Step 3/5 : RUN apt-get install tzdata
+ ---> Running in 4e7fdbd3f8a2
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  tzdata
+0 upgraded, 1 newly installed, 0 to remove and 5 not upgraded.
+Need to get 295 kB of archives.
+After this operation, 4033 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 tzdata all 2021a-0ubuntu0.20.04 [295 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 295 kB in 0s (907 kB/s)
+Selecting previously unselected package tzdata.
+(Reading database ... 4121 files and directories currently installed.)
+Preparing to unpack .../tzdata_2021a-0ubuntu0.20.04_all.deb ...
+Unpacking tzdata (2021a-0ubuntu0.20.04) ...
+Setting up tzdata (2021a-0ubuntu0.20.04) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Configuring tzdata
+------------------
+
+Please select the geographic area in which you live. Subsequent configuration
+questions will narrow this down by presenting a list of cities, representing
+the time zones in which they are located.
+
+  1. Africa      4. Australia  7. Atlantic  10. Pacific  13. Etc
+  2. America     5. Arctic     8. Europe    11. SystemV
+  3. Antarctica  6. Asia       9. Indian    12. US
+Geographic area: 
+Use of uninitialized value $_[1] in join or string at /usr/share/perl5/Debconf/DbDriver/Stack.pm line 111.
+
+Current default time zone: '/UTC'
+Local time is now:      Sun May 30 19:23:39 UTC 2021.
+Universal Time is now:  Sun May 30 19:23:39 UTC 2021.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Use of uninitialized value $val in substitution (s///) at /usr/share/perl5/Debconf/Format/822.pm line 83, <GEN6> line 4.
+Use of uninitialized value $val in concatenation (.) or string at /usr/share/perl5/Debconf/Format/822.pm line 84, <GEN6> line 4.
+Removing intermediate container 4e7fdbd3f8a2
+ ---> 4c15a79b6521
+Step 4/5 : ENV TZ 'Europe/Rome'
+ ---> Running in 497809885cd2
+Removing intermediate container 497809885cd2
+ ---> 71102529a9a9
+Step 5/5 : CMD date +%c
+ ---> Running in 6cd73edc4271
+Removing intermediate container 6cd73edc4271
+ ---> ac3be743a192
+Successfully built ac3be743a192
+Successfully tagged rome_datetime:0.1
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#9_Docker_Practice$ docker images
+REPOSITORY      TAG       IMAGE ID       CREATED         SIZE
+rome_datetime   0.1       ac3be743a192   7 seconds ago   105MB
+flask_app_v1    latest    ad580880f8f6   3 days ago      422MB
+<none>          <none>    d14cf63955fc   3 days ago      422MB
+ubuntu          20.04     7e0aa2d69a15   5 weeks ago     72.7MB
+ubuntu          latest    7e0aa2d69a15   5 weeks ago     72.7MB
+alist@alist-GF63-8RD:~/Python-Martian-Manhunter-adv-/homeworks/#9_Docker_Practice$ docker run ac
+Sun May 30 21:23:59 2021
+

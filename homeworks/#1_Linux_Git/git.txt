@@ -1,0 +1,155 @@
+alist@alist-GF63-8RD:~$ mkdir cursor_git
+alist@alist-GF63-8RD:~$ ls
+Відео      Завантаження      Зображення  Стільниця  cursor_git         linux_lecture  Projects
+Документи  Загальнодоступні  Музика      Шаблони    linux_history.txt  linux.txt      snap
+alist@alist-GF63-8RD:~$ cd cursor_git
+alist@alist-GF63-8RD:~/cursor_git$ touch first.py
+alist@alist-GF63-8RD:~/cursor_git$ git init
+Переініціалізоване наявне спільне сховище Git в /home/alist/cursor_git/.git/
+alist@alist-GF63-8RD:~/cursor_git$ git add first.py
+alist@alist-GF63-8RD:~/cursor_git$ git commit -m "adding first.py"
+[master (кореневий коміт) 159b124] adding first.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 first.py
+alist@alist-GF63-8RD:~/cursor_git$ git log
+commit 159b1240859fb6f3e66f7560065143eb9f1a664e (HEAD -> master)
+Author: Olesia Yaloveha <pulosez@gmail.com>
+Date:   Wed Apr 28 18:26:17 2021 +0300
+
+    adding first.py
+alist@alist-GF63-8RD:~/cursor_git$ touch second.py
+alist@alist-GF63-8RD:~/cursor_git$ git add second.py
+alist@alist-GF63-8RD:~/cursor_git$ git commit -m "adding second.py"
+[master 086c92d] adding second.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 second.py
+alist@alist-GF63-8RD:~/cursor_git$ rm first.py
+alist@alist-GF63-8RD:~/cursor_git$ git add .
+alist@alist-GF63-8RD:~/cursor_git$ git commit -m "removing first.py"
+[master 94bc028] removing first.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 first.py
+alist@alist-GF63-8RD:~/cursor_git$ git log
+commit 94bc028f20045d30ff0c8b76733b9b336994a5d7 (HEAD -> master)
+Author: Olesia Yaloveha <pulosez@gmail.com>
+Date:   Wed Apr 28 18:40:19 2021 +0300
+
+    removing first.py
+
+commit 086c92d841df5859a49e9792e3b5ce5a5984f262
+Author: Olesia Yaloveha <pulosez@gmail.com>
+Date:   Wed Apr 28 18:38:14 2021 +0300
+
+    adding second.py
+
+commit 159b1240859fb6f3e66f7560065143eb9f1a664e
+Author: Olesia Yaloveha <pulosez@gmail.com>
+Date:   Wed Apr 28 18:26:17 2021 +0300
+
+    adding first.py
+alist@alist-GF63-8RD:~/cursor_git$ git remote add origin git@github.com:pulosez/cursor_git
+alist@alist-GF63-8RD:~/cursor_git$ git remote -v
+origin	git@github.com:pulosez/cursor_git (fetch)
+origin	git@github.com:pulosez/cursor_git (push)
+alist@alist-GF63-8RD:~/cursor_git$ git push
+fatal: Поточна гілка master не має гілки upstream.
+Щоб надіслати поточну гілку й встановити зовнішню гілку як гілку upstream, використовуйте
+    git push --set-upstream origin master
+
+alist@alist-GF63-8RD:~/cursor_git$ git push --set-upstream origin master
+Enumerating objects: 7, виконано.
+Підрахунок об’єктів: 100% (7/7), виконано.
+Delta compression using up to 8 threads
+Стиснення об’єктів: 100% (4/4), виконано.
+Запис об’єктів: 100% (7/7), 651 bytes | 651.00 KiB/s, виконано.
+Total 7 (delta 0), reused 0 (delta 0)
+To github.com:pulosez/cursor_git
+ * [new branch]      master -> master
+Гілка «master» відслідковує зовнішню гілку «master» з «origin».
+alist@alist-GF63-8RD:~/cursor_git$ git branch first
+alist@alist-GF63-8RD:~/cursor_git$ git branch second
+alist@alist-GF63-8RD:~/cursor_git$ git checkout second
+Перейшов до гілки «second»
+alist@alist-GF63-8RD:~/cursor_git$ git branch
+  first
+  master
+* second
+alist@alist-GF63-8RD:~/cursor_git$ echo 'print("Hello")' > second.py
+alist@alist-GF63-8RD:~/cursor_git$ git stash
+Saved working directory and index state WIP on second: 94bc028 removing first.py
+alist@alist-GF63-8RD:~/cursor_git$ git checkout first
+Перейшов до гілки «first»
+alist@alist-GF63-8RD:~/cursor_git$ git checkout second
+Перейшов до гілки «second»
+alist@alist-GF63-8RD:~/cursor_git$ git stash pop
+На гілці second
+Зміни не споряджені для коміту
+  (використовуйте "git add <file>..." щоб оновити дані, котрі будуть збережені в коміті)
+  (use "git restore <file>..." to discard changes in working directory)
+	змінено:       second.py
+
+жодних зміни у коміт не додано (використовуйте «git add» та/або «git commit -a»)
+Dropped refs/stash@{0} (b59e14ada88d8771fbd4723ebc1c85439ec57844)
+alist@alist-GF63-8RD:~/cursor_git$ git add second.py
+alist@alist-GF63-8RD:~/cursor_git$ git commit -m "Changing second.py"
+[second 132f469] Changing second.py
+ 1 file changed, 1 insertion(+)
+alist@alist-GF63-8RD:~/cursor_git$ git push --set-upstream origin second
+Enumerating objects: 5, виконано.
+Підрахунок об’єктів: 100% (5/5), виконано.
+Запис об’єктів: 100% (3/3), 268 bytes | 268.00 KiB/s, виконано.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'second' on GitHub by visiting:
+remote:      https://github.com/pulosez/cursor_git/pull/new/second
+remote: 
+To github.com:pulosez/cursor_git
+ * [new branch]      second -> second
+Гілка «second» відслідковує зовнішню гілку «second» з «origin».
+alist@alist-GF63-8RD:~/cursor_git$ git checkout first
+Перейшов до гілки «first»
+alist@alist-GF63-8RD:~/cursor_git$ echo 'print("Cursor")' > second.py
+alist@alist-GF63-8RD:~/cursor_git$ git add second.py
+alist@alist-GF63-8RD:~/cursor_git$ git commit -m "Changing second.py"
+[first 8b79622] Changing second.py
+ 1 file changed, 1 insertion(+)
+alist@alist-GF63-8RD:~/cursor_git$ git push --set-upstream origin first
+Enumerating objects: 5, виконано.
+Підрахунок об’єктів: 100% (5/5), виконано.
+Запис об’єктів: 100% (3/3), 271 bytes | 271.00 KiB/s, виконано.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'first' on GitHub by visiting:
+remote:      https://github.com/pulosez/cursor_git/pull/new/first
+remote: 
+To github.com:pulosez/cursor_git
+ * [new branch]      first -> first
+Гілка «first» відслідковує зовнішню гілку «first» з «origin».
+alist@alist-GF63-8RD:~/cursor_git$ git checkout master
+Перейшов до гілки «master»
+Ваша гілка актуалізована з «origin/master».
+alist@alist-GF63-8RD:~/cursor_git$ git merge second
+Оновлення 94bc028..132f469
+Fast-forward
+ second.py | 1 +
+ 1 file changed, 1 insertion(+)
+alist@alist-GF63-8RD:~/cursor_git$ git merge first
+Автоматичне злиття second.py
+КОНФЛІКТ (вміст): Конфлікт злиття в second.py
+Не вдалося провести автоматичне злиття; виправте конфлікти й зробіть коміт результату.
+alist@alist-GF63-8RD:~/cursor_git$ subl second.py
+alist@alist-GF63-8RD:~/cursor_git$ cat second.py
+print("Hello")
+print("Cursor")
+alist@alist-GF63-8RD:~/cursor_git$ git add second.py
+alist@alist-GF63-8RD:~/cursor_git$ git commit -m "Resolving conflict in second.py and merging changes"
+[master 0ea555a] Resolving conflict in second.py and merging changes
+alist@alist-GF63-8RD:~/cursor_git$ git push
+Enumerating objects: 7, виконано.
+Підрахунок об’єктів: 100% (7/7), виконано.
+Запис об’єктів: 100% (3/3), 329 bytes | 329.00 KiB/s, виконано.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:pulosez/cursor_git
+   94bc028..0ea555a  master -> master
+alist@alist-GF63-8RD:~/cursor_git$ history
+

@@ -1,0 +1,2 @@
+id	phone_name	company_id	user_id
+1	Xiaomi Redmi Note 9	1	4

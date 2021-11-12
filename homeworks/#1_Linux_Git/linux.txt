@@ -1,0 +1,118 @@
+alist@alist-GF63-8RD:~$ mkdir linux_lecture
+alist@alist-GF63-8RD:~$ touch notes.txt
+alist@alist-GF63-8RD:~$ ls
+Відео      Завантаження      Зображення  Стільниця  linux_lecture  Projects
+Документи  Загальнодоступні  Музика      Шаблони    notes.txt      snap
+alist@alist-GF63-8RD:~$ cp notes.txt linux_lecture
+alist@alist-GF63-8RD:~$ cd linux_lecture
+alist@alist-GF63-8RD:~/linux_lecture$ ls
+notes.txt
+alist@alist-GF63-8RD:~/linux_lecture$ ls -l
+загалом 0
+-rw-rw-r-- 1 alist alist 0 кві 28 12:23 notes.txt
+alist@alist-GF63-8RD:~/linux_lecture$ cd
+alist@alist-GF63-8RD:~$ ls -alr
+загалом 128
+drwx------  6 alist alist 4096 кві 26 01:45 .thunderbird
+-rw-r--r--  1 alist alist    0 кві 26 01:25 .sudo_as_admin_successful
+lrwxrwxrwx  1 alist alist   28 кві 26 12:45 .steampid -> /home/alist/.steam/steam.pid
+drwxrwxr-x  3 alist alist 4096 кві 26 12:47 .steam
+drwxr-xr-x  7 alist alist 4096 кві 26 01:43 snap
+-rw-------  1 alist alist  256 кві 26 12:38 .pulse-cookie
+drwxrwxr-x  2 alist alist 4096 кві 26 19:28 Projects
+-rw-r--r--  1 alist alist  807 кві 26 00:46 .profile
+drwx------  3 alist alist 4096 кві 26 12:41 .pki
+-rw-r--r--  1 alist alist  360 кві 27 23:19 .pam_environment
+drwx------  3 alist alist 4096 кві 26 12:29 .nv
+-rw-rw-r--  1 alist alist    0 кві 28 12:23 notes.txt
+drwx------  5 alist alist 4096 кві 26 01:12 .mozilla
+drwx------  2 alist alist 4096 кві 27 23:29 .mozc
+drwxr-xr-x  3 alist alist 4096 кві 26 01:05 .local
+drwxrwxr-x  2 alist alist 4096 кві 28 12:23 linux_lecture
+drwxrwxr-x  4 alist alist 4096 кві 26 01:43 .java
+drwx------  3 alist alist 4096 кві 26 01:05 .gnupg
+-rw-rw-r--  1 alist alist   50 кві 26 01:28 .gitconfig
+drwxr-xr-x 22 alist alist 4096 кві 27 23:20 .config
+drwxr-xr-x 22 alist alist 4096 кві 28 00:20 .cache
+-rw-r--r--  1 alist alist 3771 кві 26 00:46 .bashrc
+-rw-r--r--  1 alist alist  220 кві 26 00:46 .bash_logout
+-rw-------  1 alist alist 2219 кві 28 12:22 .bash_history
+drwx------  3 alist alist 4096 кві 26 22:19 .anthy
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Шаблони
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Стільниця
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Музика
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Зображення
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Загальнодоступні
+drwxr-xr-x  3 alist alist 4096 кві 28 10:16 Завантаження
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Документи
+drwxr-xr-x  2 alist alist 4096 кві 27 23:20 Відео
+drwxr-xr-x  4 root  root  4096 кві 26 00:46 ..
+drwxr-xr-x 25 alist alist 4096 кві 28 12:23 .
+alist@alist-GF63-8RD:~$ mv notes.txt new_notes.txt
+alist@alist-GF63-8RD:~$ ls
+Відео      Завантаження      Зображення  Стільниця  linux_lecture  Projects
+Документи  Загальнодоступні  Музика      Шаблони    new_notes.txt  snap
+alist@alist-GF63-8RD:~$ rm new_notes.txt linux_lecture/notes.txt
+alist@alist-GF63-8RD:~$ cd linux_lecture
+alist@alist-GF63-8RD:~/linux_lecture$ touch homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ ls
+homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ touch -mt 202001010415 homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ ll
+загалом 8
+drwxrwxr-x  2 alist alist 4096 кві 28 12:32 ./
+drwxr-xr-x 25 alist alist 4096 кві 28 12:31 ../
+-rw-rw-r--  1 alist alist    0 січ  1  2020 homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ stat homework.sh
+  Файл: homework.sh
+  Розмір: 0         	Блоків: 0          Блок в/в: 4096   звичайний порожній файл
+Пристрій: 816h/2070d	Inode: 790613      Посилання: 1
+Доступ: (0664/-rw-rw-r--)  Uid: ( 1000/   alist)   Gid: ( 1000/   alist)
+Доступ: 2021-04-28 12:32:16.242007861 +0300
+Модиф.: 2020-01-01 04:15:00.000000000 +0200
+ Зміна: 2021-04-28 12:38:02.742515321 +0300
+Створ.: -
+alist@alist-GF63-8RD:~/linux_lecture$ touch hw.sh hw1.sh hw2.sh hw1.txt
+alist@alist-GF63-8RD:~/linux_lecture$ ls
+homework.sh  hw1.sh  hw1.txt  hw2.sh  hw.sh
+alist@alist-GF63-8RD:~/linux_lecture$ ll | grep \.txt
+-rw-rw-r--  1 alist alist    0 кві 28 12:42 hw1.txt
+alist@alist-GF63-8RD:~/linux_lecture$ mkdir lecture_new
+alist@alist-GF63-8RD:~/linux_lecture$ cp *.txt lecture_new
+alist@alist-GF63-8RD:~/linux_lecture$ ls lecture_new
+hw1.txt
+alist@alist-GF63-8RD:~/linux_lecture$ echo 'echo "linux_lecture"' > homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ cat homework.sh
+echo "linux_lecture"
+alist@alist-GF63-8RD:~/linux_lecture$ chmod u-rx+w homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ cat homework.sh
+cat: homework.sh: Відмовлено у доступі
+alist@alist-GF63-8RD:~/linux_lecture$ chmod u+rxw homework.sh
+alist@alist-GF63-8RD:~/linux_lecture$ cat homework.sh
+echo "linux_lecture"
+alist@alist-GF63-8RD:~/linux_lecture$ ./homework.sh
+linux_lecture
+alist@alist-GF63-8RD:~/linux_lecture$ head -n7 homework.sh
+1
+2
+3
+4
+5
+6
+7
+alist@alist-GF63-8RD:~/linux_lecture$ touch notes.sh | echo 'ls' > notes.sh
+alist@alist-GF63-8RD:~/linux_lecture$ chmod u+x notes.sh
+alist@alist-GF63-8RD:~/linux_lecture$ ll
+загалом 20
+drwxrwxr-x  3 alist alist 4096 кві 28 13:06 ./
+drwxr-xr-x 25 alist alist 4096 кві 28 12:31 ../
+-rwxrw-r--  1 alist alist   21 кві 28 13:03 homework.sh*
+-rw-rw-r--  1 alist alist    0 кві 28 12:42 hw1.sh
+-rw-rw-r--  1 alist alist    0 кві 28 12:42 hw1.txt
+-rw-rw-r--  1 alist alist    0 кві 28 12:42 hw2.sh
+-rw-rw-r--  1 alist alist    0 кві 28 12:42 hw.sh
+drwxrwxr-x  2 alist alist 4096 кві 28 12:49 lecture_new/
+-rwxrw-r--  1 alist alist    3 кві 28 13:06 notes.sh*
+alist@alist-GF63-8RD:~/linux_lecture$ ./notes.sh
+homework.sh  hw1.sh  hw1.txt  hw2.sh  hw.sh  lecture_new  notes.sh
+

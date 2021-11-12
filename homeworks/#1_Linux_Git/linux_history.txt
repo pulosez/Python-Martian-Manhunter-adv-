@@ -1,0 +1,37 @@
+mkdir linux_lecture
+touch notes.txt
+ls
+cp notes.txt linux_lecture
+cd linux_lecture
+ls
+ls -l
+cd
+ls -alr
+mv notes.txt new_notes.txt
+ls
+rm new_notes.txt linux_lecture/notes.txt
+cd linux_lecture
+touch homework.sh
+ls
+touch -mt 202001010415 homework.sh
+ll
+stat homework.sh
+touch hw.sh hw1.sh hw2.sh hw1.txt
+ls
+ll | grep \.txt
+mkdir lecture_new
+cp *.txt lecture_new
+ls lecture_new
+echo 'echo "linux_lecture"' > homework.sh
+cat homework.sh
+chmod u-rx+w homework.sh
+cat homework.sh
+chmod u+rxw homework.sh
+cat homework.sh
+./homework.sh
+head -n7 homework.sh
+touch notes.sh | echo 'ls' > notes.sh
+chmod u+x notes.sh
+ll
+./notes.sh
+

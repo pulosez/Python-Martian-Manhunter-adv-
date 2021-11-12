@@ -1,0 +1,15 @@
+	#1.
+docker images
+docker save -o ubuntu-all.tar ubuntu
+ls -sh ubuntu-all.tar
+mkdir ubuntu-all
+mv ubuntu-all.tar ubuntu-all
+cd ubuntu-all
+ls -sh
+tar xvf ubuntu-all.tar
+
+
+	#2.
+docker build -t rome_datetime:0.1 .
+docker images
+docker run ac

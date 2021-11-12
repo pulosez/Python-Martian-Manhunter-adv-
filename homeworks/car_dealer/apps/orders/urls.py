@@ -2,7 +2,7 @@ from django.urls import path
 
 from apps.orders.views import OrdersListView, OrdersDetailView, serialized_orders
 
-app_name = 'order'
+app_name = 'orders'
 
 urlpatterns = [
     path(

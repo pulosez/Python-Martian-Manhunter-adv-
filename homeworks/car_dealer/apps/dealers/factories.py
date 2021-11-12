@@ -24,10 +24,3 @@ class DealerFactory(factory.django.DjangoModelFactory):
     e_mail = 'dealer_2@mail.com'
     user_id = 2
     city_id = 2
-
-
-class NewsLetterFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = 'dealers.NewsLetter'
-
-    email = 'test_email@mail.com'

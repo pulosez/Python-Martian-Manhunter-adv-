@@ -40,4 +40,8 @@ urlpatterns = [
         'orders/',
         include('apps.orders.urls', namespace='orders')
     ),
+    path(
+        'newsletters/',
+        include('apps.newsletters.urls', namespace='newsletters')
+    ),
 ]
